@@ -51,10 +51,59 @@
         [menu setPosition:ccp(240.0f, 130.0f)];
         [self addChild:menu];
         
+        // 加一个定时器,每隔1s来执行tick方法
+        [self schedule:@selector(tick:) interval:1.0f];
         
     }
     return self;
 }
+
+- (void) tick:(double) dt {
+    [self createOneBird];
+}
+
+- (void) createOneBird {
+    // 创建一个小鸟
+    CCSprite *bird = [[CCSprite alloc] initWithFile:@"bird1.png"];
+    //arc4random()产生一个随机数,给小鸟一个缩放比例
+    [bird setScale:(arc4random()%5)/10.0f];
+    // 给bird一个动作 可以跳跃的动作
+    [bird setPosition:ccp(50.0f+arc4random()%50, 70.0f)];
+    // 设置一个终点
+    CGPoint endPoint = ccp(360.0f+arc4random()%50, 70.0f);
+    
+    CGFloat height = arc4random()%100+50.0f;
+    CGFloat time = 2.0f;
+    
+    // 创建一个动作，动作执行时间是time 2s 最终位置是endPoint, 最大高度height
+    id actionJump = [CCJumpTo actionWithDuration:time position:endPoint height:height jumps:1];
+    // 这是一个完成动作的函数
+    id actionFinish = [CCCallFuncN actionWithTarget:self selector:@selector(actionFinish:)];
+    // 定义了一个顺序的动作 首先执行actionJump 然后执行actionFinish动作
+    CCSequence *allActions = [CCSequence actions:actionJump, actionFinish, nil];
+    
+    // 让bird执行一个动作
+    [bird runAction:allActions];
+    
+    [self addChild:bird];
+    [bird release];
+}
+- (void) actionFinish:(CCNode *)currentNode {
+//    // 加上小鸟撞到地板的粒子效果
+//    CCParticleSystem *explosition = [[ParticleManager sharedParticleManager] particleWithType:ParticleTypeBirdExplosion];
+//    // 得到爆破效果的粒子对象
+//    [explosition setPosition:[currentNode position]];
+//    // 把currentNode和粒子效果对象位置保持一样
+//    // 就是让粒子效果在那里发生
+//    [self addChild:explosition];
+//    
+//    // 只要这个方法被调用，就说明动作已经执行完成
+//    // currentNode其实就是bird
+//    // 从屏幕上删除这个currentNode;
+//    //[self removeChild:currentNode cleanup:YES];
+//    [currentNode removeFromParentAndCleanup:YES];
+}
+
 
 - (void) beginGame:(id)arg {
     NSLog(@"开始游戏");
