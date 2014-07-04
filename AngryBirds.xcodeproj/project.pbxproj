@@ -310,6 +310,7 @@
 		EA0FC3B11964ED9A00ACDFD6 /* AudioToolbox.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EA0FC3B01964ED9A00ACDFD6 /* AudioToolbox.framework */; };
 		EA0FC3B31964EDC500ACDFD6 /* libz.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = EA0FC3B21964EDC500ACDFD6 /* libz.dylib */; };
 		EA21B5DB196670C80035FD06 /* ParticleManager.m in Sources */ = {isa = PBXBuildFile; fileRef = EA21B5DA196670C80035FD06 /* ParticleManager.m */; };
+		EA21B5DE196687530035FD06 /* LevelScene.mm in Sources */ = {isa = PBXBuildFile; fileRef = EA21B5DD196687530035FD06 /* LevelScene.mm */; };
 		EA2E55531964F67100C49EF4 /* RootViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = EA2E55521964F67100C49EF4 /* RootViewController.m */; };
 		EA2E555A1965037600C49EF4 /* LoadingScene.mm in Sources */ = {isa = PBXBuildFile; fileRef = EA2E55591965037600C49EF4 /* LoadingScene.mm */; };
 		EA2E555D1965491700C49EF4 /* StartScene.m in Sources */ = {isa = PBXBuildFile; fileRef = EA2E555C1965491700C49EF4 /* StartScene.m */; };
@@ -794,6 +795,8 @@
 		EA0FC3B21964EDC500ACDFD6 /* libz.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libz.dylib; path = usr/lib/libz.dylib; sourceTree = SDKROOT; };
 		EA21B5D9196670C80035FD06 /* ParticleManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ParticleManager.h; path = util/ParticleManager.h; sourceTree = "<group>"; };
 		EA21B5DA196670C80035FD06 /* ParticleManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ParticleManager.m; path = util/ParticleManager.m; sourceTree = "<group>"; };
+		EA21B5DC196687530035FD06 /* LevelScene.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LevelScene.h; sourceTree = "<group>"; };
+		EA21B5DD196687530035FD06 /* LevelScene.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = LevelScene.mm; sourceTree = "<group>"; };
 		EA2E55511964F67100C49EF4 /* RootViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RootViewController.h; sourceTree = "<group>"; };
 		EA2E55521964F67100C49EF4 /* RootViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RootViewController.m; sourceTree = "<group>"; };
 		EA2E55581965037600C49EF4 /* LoadingScene.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LoadingScene.h; sourceTree = "<group>"; };
@@ -1557,6 +1560,8 @@
 				EA2E55591965037600C49EF4 /* LoadingScene.mm */,
 				EA2E555B1965491700C49EF4 /* StartScene.h */,
 				EA2E555C1965491700C49EF4 /* StartScene.m */,
+				EA21B5DC196687530035FD06 /* LevelScene.h */,
+				EA21B5DD196687530035FD06 /* LevelScene.mm */,
 			);
 			path = scene;
 			sourceTree = "<group>";
@@ -1837,6 +1842,7 @@
 				EA0FC33B1964EBAF00ACDFD6 /* CCParticleSystemPoint.m in Sources */,
 				EA0FC3321964EBAF00ACDFD6 /* CCLabelTTF.m in Sources */,
 				EA0FC39C1964EBAF00ACDFD6 /* SBJsonStreamWriter.m in Sources */,
+				EA21B5DE196687530035FD06 /* LevelScene.mm in Sources */,
 				EA0FC3251964EBAF00ACDFD6 /* CCActionTween.m in Sources */,
 				EA0FC3571964EBAF00ACDFD6 /* ES1Renderer.m in Sources */,
 				EA0FC3681964EBAF00ACDFD6 /* CocosDenshion.m in Sources */,

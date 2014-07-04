@@ -8,6 +8,7 @@
 
 #import "StartScene.h"
 #import "ParticleManager.h"
+#import "LevelScene.h"
 
 
 @implementation StartScene
@@ -28,6 +29,7 @@
         
         // 得到屏幕宽高
         CGSize s = [[CCDirector sharedDirector] winSize];
+        
         // 以图片startbg.png创建背景精灵
         // 然后设置精灵的位置为屏幕的中心点
         CCSprite *bgSprite = [CCSprite spriteWithFile:@"startbg.png"];
@@ -46,8 +48,10 @@
         // 正常状态是这个精灵，选中这里设置为nil
         // 当点击了就调用self里面的beginGame:方法
         CCSprite *beginSprite = [CCSprite spriteWithFile:@"start.png"];
+        
         CCMenuItemSprite *beginMenuItem = [CCMenuItemSprite itemFromNormalSprite:beginSprite selectedSprite:nil target:self selector:@selector(beginGame:)];
         beginMenuItem.scale = 0.5;
+        
         CCMenu *menu = [CCMenu menuWithItems:beginMenuItem, nil];
         [menu setPosition:ccp(240.0f, 130.0f)];
         [self addChild:menu];
@@ -115,6 +119,30 @@
     NSLog(@"开始游戏");
     // 启动LevelScene剧场
 
+    CCScene *level = [LevelScene scene];
+    // 给一个时间2s 让他CCTransitionSplitCols动画到level剧场
+    // 1. 竖向动画
+    //    CCTransitionScene *trans = [[CCTransitionSplitCols alloc] initWithDuration:2.0f scene:level];
+    // 2. 横向剧场
+    //    CCTransitionScene *trans = [[CCTransitionSplitRows alloc] initWithDuration:2.0f scene:level];
+    // 3. 雷达效果(2种)
+    //    CCTransitionScene *trans = [[CCTransitionRadialCCW alloc] initWithDuration:2.0f scene:level];
+    // 4. 小格子动画
+    //    CCTransitionScene *trans = [[CCTransitionTurnOffTiles alloc] initWithDuration:2.0f scene:level];
+    // 5. 左右滑动
+    //    CCTransitionScene *trans = [[CCTransitionSlideInL alloc] initWithDuration:2.0f scene:level];
+    // 6. 翻转效果
+    //    CCTransitionScene *trans = [[CCTransitionFlipX alloc] initWithDuration:2.0f scene:level];
+    // 7. 翻转效果
+    //    CCTransitionScene *trans = [[CCTransitionZoomFlipAngular alloc] initWithDuration:1.0f scene:level];
+    
+    // 把level剧场包装成一个动画剧场
+    CCTransitionScene *trans = [[CCTransitionSplitRows alloc] initWithDuration:1.0f scene:level];
+    // 导演切换到动画剧场 trans
+    [[CCDirector sharedDirector] replaceScene:trans];
+    
+    [trans release];
+    
 }
 
 
