@@ -314,6 +314,7 @@
 		EA2E55531964F67100C49EF4 /* RootViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = EA2E55521964F67100C49EF4 /* RootViewController.m */; };
 		EA2E555A1965037600C49EF4 /* LoadingScene.mm in Sources */ = {isa = PBXBuildFile; fileRef = EA2E55591965037600C49EF4 /* LoadingScene.mm */; };
 		EA2E555D1965491700C49EF4 /* StartScene.m in Sources */ = {isa = PBXBuildFile; fileRef = EA2E555C1965491700C49EF4 /* StartScene.m */; };
+		EA4DC3E419669686000D947C /* GameUtils.m in Sources */ = {isa = PBXBuildFile; fileRef = EA4DC3E319669686000D947C /* GameUtils.m */; };
 		EAFA095D196554EA003F298A /* README.md in Resources */ = {isa = PBXBuildFile; fileRef = EAFA095C196554EA003F298A /* README.md */; };
 /* End PBXBuildFile section */
 
@@ -803,6 +804,8 @@
 		EA2E55591965037600C49EF4 /* LoadingScene.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = LoadingScene.mm; sourceTree = "<group>"; };
 		EA2E555B1965491700C49EF4 /* StartScene.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = StartScene.h; sourceTree = "<group>"; };
 		EA2E555C1965491700C49EF4 /* StartScene.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = StartScene.m; sourceTree = "<group>"; };
+		EA4DC3E219669686000D947C /* GameUtils.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = GameUtils.h; path = util/GameUtils.h; sourceTree = "<group>"; };
+		EA4DC3E319669686000D947C /* GameUtils.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = GameUtils.m; path = util/GameUtils.m; sourceTree = "<group>"; };
 		EAFA095C196554EA003F298A /* README.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = README.md; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -1549,6 +1552,8 @@
 			children = (
 				EA21B5D9196670C80035FD06 /* ParticleManager.h */,
 				EA21B5DA196670C80035FD06 /* ParticleManager.m */,
+				EA4DC3E219669686000D947C /* GameUtils.h */,
+				EA4DC3E319669686000D947C /* GameUtils.m */,
 			);
 			name = utils;
 			sourceTree = "<group>";
@@ -1857,6 +1862,7 @@
 				EA0FC33C1964EBAF00ACDFD6 /* CCParticleSystemQuad.m in Sources */,
 				EA0FC32B1964EBAF00ACDFD6 /* CCConfiguration.m in Sources */,
 				EA0FC34C1964EBAF00ACDFD6 /* CCTMXObjectGroup.m in Sources */,
+				EA4DC3E419669686000D947C /* GameUtils.m in Sources */,
 				EA2E55531964F67100C49EF4 /* RootViewController.m in Sources */,
 				EA0FC3311964EBAF00ACDFD6 /* CCLabelBMFont.m in Sources */,
 				EA0FC2FD1964EBAF00ACDFD6 /* b2TimeOfImpact.cpp in Sources */,

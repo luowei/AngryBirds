@@ -1,5 +1,5 @@
 //
-//  LevelScene.h
+//  GameUtils.h
 //  AngryBirds
 //
 //  Created by luowei on 14-7-4.
@@ -7,12 +7,10 @@
 //
 
 #import <Foundation/Foundation.h>
-#import "cocos2d.h"
 
-@interface LevelScene : CCLayer{
-    int successLevel; // 当前成功的通关数 1-16
-}
+@interface GameUtils : NSObject
 
-+ (id) scene ;
++ (int) readLevelFromFile;
++ (void) writeLevelToFile:(int)level;
 
 @end

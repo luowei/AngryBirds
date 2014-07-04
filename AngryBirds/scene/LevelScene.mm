@@ -7,6 +7,7 @@
 //
 
 #import "LevelScene.h"
+#import "GameUtils.h"
 
 @implementation LevelScene
 
@@ -34,6 +35,35 @@
         backsp.scale = 0.5f;
         backsp.tag = 100;
         [self addChild:backsp];
+        
+        // 加上14关
+        successLevel = [GameUtils readLevelFromFile];;
+        NSString *imgPath = nil;
+        for (int i = 0; i < 16; i++) {
+            if (i < successLevel) {
+                // 已经通关的
+                imgPath = @"level.png";
+                NSString *str = [NSString stringWithFormat:
+                                 @"%d", i+1];
+                CCLabelTTF *numLabel = [CCLabelTTF labelWithString:str dimensions:CGSizeMake(60.0f, 60.0f) alignment:UITextAlignmentCenter fontName:@"Marker Felt" fontSize:30.0f];
+                float x = 60+i%8*60;
+                float y = 320-75-i/8*80;
+                numLabel.position = ccp(x, y);
+                [self addChild:numLabel z:2];
+            } else {
+                // 加锁的关卡
+                imgPath = @"clock.png";
+            }
+            CCSprite *levelSprite = [CCSprite spriteWithFile:imgPath];
+            // 设置图片精灵
+            levelSprite.tag = i+1; // i+1为了避免tag为0
+            float x = 60+i%8*60;
+            float y = 320-60-i/8*80;
+            levelSprite.position = ccp(x, y);
+            levelSprite.scale = 0.6f;
+            [self addChild:levelSprite z:1];
+        }
+        
     }
     return self;
 }
