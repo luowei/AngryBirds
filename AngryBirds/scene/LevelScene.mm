@@ -8,6 +8,7 @@
 
 #import "LevelScene.h"
 #import "GameUtils.h"
+#import "StartScene.h"
 
 @implementation LevelScene
 
@@ -64,8 +65,43 @@
             [self addChild:levelSprite z:1];
         }
         
+        //把self的触摸开关打开,让self可以接受触摸事件
+        [self setIsTouchEnabled:YES];
+
     }
     return self;
+}
+
+-(void)ccTouchesEnded:(NSSet *)touches withEvent:(UIEvent *)event{
+    //拿到ui触摸点
+    UITouch *oneTouch = [touches anyObject];
+    // 取得当前触摸的一个uiview,这里的touchview其实就是 glview
+    UIView *touchView = [oneTouch view];
+    
+    // 取得把ui坐标
+    CGPoint location = [oneTouch locationInView:touchView];
+    
+    // 把ui坐标转化成world世界坐标
+    CGPoint worldGlPoint = [[CCDirector sharedDirector] convertToGL:location];
+    // 把世界坐标转化为node坐标
+    CGPoint nodePoint = [self convertToNodeSpace:worldGlPoint];
+    
+    // self.children.count self上所有的一层孩子
+    for (int i = 0; i < self.children.count; i++) {
+        // 取得self屏幕上第i个精灵
+        CCSprite *oneSprite = [self.children objectAtIndex:i];
+        // 如果nodePoint包含在oneSprite中，并且tag为100
+        if (CGRectContainsPoint(oneSprite.boundingBox, nodePoint) && oneSprite.tag == 100) {
+            
+            CCScene *sc = [StartScene scene];
+            CCTransitionScene *trans = [[CCTransitionSplitRows alloc] initWithDuration:1.0f scene:sc];
+            [[CCDirector sharedDirector] replaceScene:trans];
+            [trans release];
+        } else if (CGRectContainsPoint(oneSprite.boundingBox, nodePoint) && (oneSprite.tag < successLevel+1) && oneSprite.tag >0) {
+            NSLog(@"选中了第 %d 关", oneSprite.tag);
+            
+        }
+    }
 }
 
 @end
