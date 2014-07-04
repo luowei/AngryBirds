@@ -309,6 +309,7 @@
 		EA0FC3AF1964ED8100ACDFD6 /* AVFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EA0FC3AE1964ED8100ACDFD6 /* AVFoundation.framework */; };
 		EA0FC3B11964ED9A00ACDFD6 /* AudioToolbox.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EA0FC3B01964ED9A00ACDFD6 /* AudioToolbox.framework */; };
 		EA0FC3B31964EDC500ACDFD6 /* libz.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = EA0FC3B21964EDC500ACDFD6 /* libz.dylib */; };
+		EA21B5DB196670C80035FD06 /* ParticleManager.m in Sources */ = {isa = PBXBuildFile; fileRef = EA21B5DA196670C80035FD06 /* ParticleManager.m */; };
 		EA2E55531964F67100C49EF4 /* RootViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = EA2E55521964F67100C49EF4 /* RootViewController.m */; };
 		EA2E555A1965037600C49EF4 /* LoadingScene.mm in Sources */ = {isa = PBXBuildFile; fileRef = EA2E55591965037600C49EF4 /* LoadingScene.mm */; };
 		EA2E555D1965491700C49EF4 /* StartScene.m in Sources */ = {isa = PBXBuildFile; fileRef = EA2E555C1965491700C49EF4 /* StartScene.m */; };
@@ -791,6 +792,8 @@
 		EA0FC3AE1964ED8100ACDFD6 /* AVFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AVFoundation.framework; path = System/Library/Frameworks/AVFoundation.framework; sourceTree = SDKROOT; };
 		EA0FC3B01964ED9A00ACDFD6 /* AudioToolbox.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AudioToolbox.framework; path = System/Library/Frameworks/AudioToolbox.framework; sourceTree = SDKROOT; };
 		EA0FC3B21964EDC500ACDFD6 /* libz.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libz.dylib; path = usr/lib/libz.dylib; sourceTree = SDKROOT; };
+		EA21B5D9196670C80035FD06 /* ParticleManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ParticleManager.h; path = util/ParticleManager.h; sourceTree = "<group>"; };
+		EA21B5DA196670C80035FD06 /* ParticleManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ParticleManager.m; path = util/ParticleManager.m; sourceTree = "<group>"; };
 		EA2E55511964F67100C49EF4 /* RootViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RootViewController.h; sourceTree = "<group>"; };
 		EA2E55521964F67100C49EF4 /* RootViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RootViewController.m; sourceTree = "<group>"; };
 		EA2E55581965037600C49EF4 /* LoadingScene.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LoadingScene.h; sourceTree = "<group>"; };
@@ -873,6 +876,7 @@
 		EA0FC0911964EAD400ACDFD6 /* AngryBirds */ = {
 			isa = PBXGroup;
 			children = (
+				EA21B5D8196670800035FD06 /* utils */,
 				EA0FC09A1964EAD400ACDFD6 /* AppDelegate.h */,
 				EA0FC09B1964EAD400ACDFD6 /* AppDelegate.mm */,
 				EA2E55511964F67100C49EF4 /* RootViewController.h */,
@@ -1537,6 +1541,15 @@
 			path = JSON;
 			sourceTree = "<group>";
 		};
+		EA21B5D8196670800035FD06 /* utils */ = {
+			isa = PBXGroup;
+			children = (
+				EA21B5D9196670C80035FD06 /* ParticleManager.h */,
+				EA21B5DA196670C80035FD06 /* ParticleManager.m */,
+			);
+			name = utils;
+			sourceTree = "<group>";
+		};
 		EA2E55571965037600C49EF4 /* scene */ = {
 			isa = PBXGroup;
 			children = (
@@ -1813,6 +1826,7 @@
 				EA0FC3A71964EBAF00ACDFD6 /* CJSONSerializer.m in Sources */,
 				EA0FC3471964EBAF00ACDFD6 /* CCTextureAtlas.m in Sources */,
 				EA0FC3431964EBAF00ACDFD6 /* CCSpriteBatchNode.m in Sources */,
+				EA21B5DB196670C80035FD06 /* ParticleManager.m in Sources */,
 				EA0FC3591964EBAF00ACDFD6 /* CCDirectorMac.m in Sources */,
 				EA0FC33F1964EBAF00ACDFD6 /* CCRibbon.m in Sources */,
 				EA0FC2FE1964EBAF00ACDFD6 /* b2CircleShape.cpp in Sources */,

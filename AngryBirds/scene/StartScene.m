@@ -7,6 +7,7 @@
 //
 
 #import "StartScene.h"
+#import "ParticleManager.h"
 
 
 @implementation StartScene
@@ -51,9 +52,13 @@
         [menu setPosition:ccp(240.0f, 130.0f)];
         [self addChild:menu];
         
-        // 加一个定时器,每隔1s来执行tick方法
+        //加一个定时器,每隔1s来执行tick方法
         [self schedule:@selector(tick:) interval:1.0f];
         
+        //加雪花的粒子效果，取得雪花的粒子效果对象
+        CCParticleSystem *snow = [[ParticleManager sharedParticleManager] particleWithType:ParticleTypeSnow];
+        //把雪花粒子效果加入到self上
+        [self addChild:snow];
     }
     return self;
 }
@@ -88,20 +93,21 @@
     [self addChild:bird];
     [bird release];
 }
+
+// 加上小鸟撞到地板的粒子效果
 - (void) actionFinish:(CCNode *)currentNode {
-//    // 加上小鸟撞到地板的粒子效果
-//    CCParticleSystem *explosition = [[ParticleManager sharedParticleManager] particleWithType:ParticleTypeBirdExplosion];
-//    // 得到爆破效果的粒子对象
-//    [explosition setPosition:[currentNode position]];
-//    // 把currentNode和粒子效果对象位置保持一样
-//    // 就是让粒子效果在那里发生
-//    [self addChild:explosition];
-//    
-//    // 只要这个方法被调用，就说明动作已经执行完成
-//    // currentNode其实就是bird
-//    // 从屏幕上删除这个currentNode;
-//    //[self removeChild:currentNode cleanup:YES];
-//    [currentNode removeFromParentAndCleanup:YES];
+    // 得到爆破效果的粒子对象
+    CCParticleSystem *explosition = [[ParticleManager sharedParticleManager] particleWithType:ParticleTypeBirdExplosion];
+    // 把currentNode和粒子效果对象位置保持一样,让粒子效果在这个位置发生
+    [explosition setPosition:[currentNode position]];
+    
+    [self addChild:explosition];
+    
+    // 只要这个方法被调用，就说明动作已经执行完成
+    // currentNode其实就是bird
+    // 从屏幕上删除这个currentNode;
+    //[self removeChild:currentNode cleanup:YES];
+    [currentNode removeFromParentAndCleanup:YES];
 }
 
 
