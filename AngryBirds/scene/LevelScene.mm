@@ -9,6 +9,7 @@
 #import "LevelScene.h"
 #import "GameUtils.h"
 #import "StartScene.h"
+#import "GameScene.h"
 
 @implementation LevelScene
 
@@ -98,8 +99,9 @@
             [[CCDirector sharedDirector] replaceScene:trans];
             [trans release];
         } else if (CGRectContainsPoint(oneSprite.boundingBox, nodePoint) && (oneSprite.tag < successLevel+1) && oneSprite.tag >0) {
-            NSLog(@"选中了第 %d 关", oneSprite.tag);
-            
+//            NSLog(@"选中了第 %d 关", oneSprite.tag);
+            CCScene *sc = [GameScene sceneWithLevel:oneSprite.tag];
+            [[CCDirector sharedDirector] replaceScene:sc];
         }
     }
 }

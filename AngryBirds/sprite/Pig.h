@@ -7,7 +7,8 @@
 //
 
 #import <Foundation/Foundation.h>
+#import "SpriteBase.h"
 
-@interface Pig : NSObject
+@interface Pig : SpriteBase
 
 @end

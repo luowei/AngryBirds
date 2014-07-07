@@ -8,6 +8,8 @@
 
 #import <Foundation/Foundation.h>
 
-@interface Ice : NSObject
+#import "SpriteBase.h"
+
+@interface Ice : SpriteBase
 
 @end

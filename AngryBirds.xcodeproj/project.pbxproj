@@ -315,6 +315,14 @@
 		EA2E555A1965037600C49EF4 /* LoadingScene.mm in Sources */ = {isa = PBXBuildFile; fileRef = EA2E55591965037600C49EF4 /* LoadingScene.mm */; };
 		EA2E555D1965491700C49EF4 /* StartScene.m in Sources */ = {isa = PBXBuildFile; fileRef = EA2E555C1965491700C49EF4 /* StartScene.m */; };
 		EA4DC3E419669686000D947C /* GameUtils.m in Sources */ = {isa = PBXBuildFile; fileRef = EA4DC3E319669686000D947C /* GameUtils.m */; };
+		EAEDD7DF196A337600B94E6C /* GameScene.mm in Sources */ = {isa = PBXBuildFile; fileRef = EAEDD7DE196A337600B94E6C /* GameScene.mm */; };
+		EAEDD7E2196A3FF900B94E6C /* JsonParser.mm in Sources */ = {isa = PBXBuildFile; fileRef = EAEDD7E1196A3FF900B94E6C /* JsonParser.mm */; };
+		EAEDD7E6196A5FEF00B94E6C /* SpriteBase.mm in Sources */ = {isa = PBXBuildFile; fileRef = EAEDD7E5196A5FEF00B94E6C /* SpriteBase.mm */; };
+		EAEDD7E9196A613A00B94E6C /* Bird.mm in Sources */ = {isa = PBXBuildFile; fileRef = EAEDD7E8196A613A00B94E6C /* Bird.mm */; };
+		EAEDD7EF196A622300B94E6C /* Pig.mm in Sources */ = {isa = PBXBuildFile; fileRef = EAEDD7EE196A622300B94E6C /* Pig.mm */; };
+		EAEDD7F2196A62AA00B94E6C /* Ice.mm in Sources */ = {isa = PBXBuildFile; fileRef = EAEDD7F1196A62AA00B94E6C /* Ice.mm */; };
+		EAEDD7F5196A632300B94E6C /* SlingShot.mm in Sources */ = {isa = PBXBuildFile; fileRef = EAEDD7F4196A632300B94E6C /* SlingShot.mm */; };
+		EAEDD7F8196A670300B94E6C /* MyContactListener.m in Sources */ = {isa = PBXBuildFile; fileRef = EAEDD7F7196A670300B94E6C /* MyContactListener.m */; };
 		EAFA095D196554EA003F298A /* README.md in Resources */ = {isa = PBXBuildFile; fileRef = EAFA095C196554EA003F298A /* README.md */; };
 /* End PBXBuildFile section */
 
@@ -806,6 +814,22 @@
 		EA2E555C1965491700C49EF4 /* StartScene.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = StartScene.m; sourceTree = "<group>"; };
 		EA4DC3E219669686000D947C /* GameUtils.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = GameUtils.h; path = util/GameUtils.h; sourceTree = "<group>"; };
 		EA4DC3E319669686000D947C /* GameUtils.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = GameUtils.m; path = util/GameUtils.m; sourceTree = "<group>"; };
+		EAEDD7DD196A337600B94E6C /* GameScene.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GameScene.h; sourceTree = "<group>"; };
+		EAEDD7DE196A337600B94E6C /* GameScene.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = GameScene.mm; sourceTree = "<group>"; };
+		EAEDD7E0196A3FF900B94E6C /* JsonParser.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JsonParser.h; sourceTree = "<group>"; };
+		EAEDD7E1196A3FF900B94E6C /* JsonParser.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = JsonParser.mm; sourceTree = "<group>"; };
+		EAEDD7E4196A5FEF00B94E6C /* SpriteBase.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SpriteBase.h; path = sprite/SpriteBase.h; sourceTree = "<group>"; };
+		EAEDD7E5196A5FEF00B94E6C /* SpriteBase.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; name = SpriteBase.mm; path = sprite/SpriteBase.mm; sourceTree = "<group>"; };
+		EAEDD7E7196A613A00B94E6C /* Bird.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Bird.h; path = sprite/Bird.h; sourceTree = "<group>"; };
+		EAEDD7E8196A613A00B94E6C /* Bird.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; name = Bird.mm; path = sprite/Bird.mm; sourceTree = "<group>"; };
+		EAEDD7ED196A622300B94E6C /* Pig.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Pig.h; path = sprite/Pig.h; sourceTree = "<group>"; };
+		EAEDD7EE196A622300B94E6C /* Pig.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; name = Pig.mm; path = sprite/Pig.mm; sourceTree = "<group>"; };
+		EAEDD7F0196A62AA00B94E6C /* Ice.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Ice.h; path = sprite/Ice.h; sourceTree = "<group>"; };
+		EAEDD7F1196A62AA00B94E6C /* Ice.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; name = Ice.mm; path = sprite/Ice.mm; sourceTree = "<group>"; };
+		EAEDD7F3196A632300B94E6C /* SlingShot.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SlingShot.h; path = sprite/SlingShot.h; sourceTree = "<group>"; };
+		EAEDD7F4196A632300B94E6C /* SlingShot.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; name = SlingShot.mm; path = sprite/SlingShot.mm; sourceTree = "<group>"; };
+		EAEDD7F6196A670300B94E6C /* MyContactListener.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MyContactListener.h; path = sprite/MyContactListener.h; sourceTree = "<group>"; };
+		EAEDD7F7196A670300B94E6C /* MyContactListener.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = MyContactListener.m; path = sprite/MyContactListener.m; sourceTree = "<group>"; };
 		EAFA095C196554EA003F298A /* README.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = README.md; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -882,6 +906,7 @@
 		EA0FC0911964EAD400ACDFD6 /* AngryBirds */ = {
 			isa = PBXGroup;
 			children = (
+				EAEDD7E3196A5F3000B94E6C /* sprite */,
 				EA21B5D8196670800035FD06 /* utils */,
 				EA0FC09A1964EAD400ACDFD6 /* AppDelegate.h */,
 				EA0FC09B1964EAD400ACDFD6 /* AppDelegate.mm */,
@@ -1567,8 +1592,31 @@
 				EA2E555C1965491700C49EF4 /* StartScene.m */,
 				EA21B5DC196687530035FD06 /* LevelScene.h */,
 				EA21B5DD196687530035FD06 /* LevelScene.mm */,
+				EAEDD7DD196A337600B94E6C /* GameScene.h */,
+				EAEDD7DE196A337600B94E6C /* GameScene.mm */,
+				EAEDD7E0196A3FF900B94E6C /* JsonParser.h */,
+				EAEDD7E1196A3FF900B94E6C /* JsonParser.mm */,
 			);
 			path = scene;
+			sourceTree = "<group>";
+		};
+		EAEDD7E3196A5F3000B94E6C /* sprite */ = {
+			isa = PBXGroup;
+			children = (
+				EAEDD7E4196A5FEF00B94E6C /* SpriteBase.h */,
+				EAEDD7E5196A5FEF00B94E6C /* SpriteBase.mm */,
+				EAEDD7E7196A613A00B94E6C /* Bird.h */,
+				EAEDD7E8196A613A00B94E6C /* Bird.mm */,
+				EAEDD7ED196A622300B94E6C /* Pig.h */,
+				EAEDD7EE196A622300B94E6C /* Pig.mm */,
+				EAEDD7F0196A62AA00B94E6C /* Ice.h */,
+				EAEDD7F1196A62AA00B94E6C /* Ice.mm */,
+				EAEDD7F3196A632300B94E6C /* SlingShot.h */,
+				EAEDD7F4196A632300B94E6C /* SlingShot.mm */,
+				EAEDD7F6196A670300B94E6C /* MyContactListener.h */,
+				EAEDD7F7196A670300B94E6C /* MyContactListener.m */,
+			);
+			name = sprite;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -1810,6 +1858,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				EAEDD7EF196A622300B94E6C /* Pig.mm in Sources */,
 				EA0FC3141964EBAF00ACDFD6 /* b2LineJoint.cpp in Sources */,
 				EA0FC2FA1964EBAF00ACDFD6 /* b2Collision.cpp in Sources */,
 				EA0FC3151964EBAF00ACDFD6 /* b2MouseJoint.cpp in Sources */,
@@ -1838,6 +1887,7 @@
 				EA0FC3431964EBAF00ACDFD6 /* CCSpriteBatchNode.m in Sources */,
 				EA21B5DB196670C80035FD06 /* ParticleManager.m in Sources */,
 				EA0FC3591964EBAF00ACDFD6 /* CCDirectorMac.m in Sources */,
+				EAEDD7F5196A632300B94E6C /* SlingShot.mm in Sources */,
 				EA0FC33F1964EBAF00ACDFD6 /* CCRibbon.m in Sources */,
 				EA0FC2FE1964EBAF00ACDFD6 /* b2CircleShape.cpp in Sources */,
 				EA0FC3181964EBAF00ACDFD6 /* b2RevoluteJoint.cpp in Sources */,
@@ -1866,6 +1916,7 @@
 				EA2E55531964F67100C49EF4 /* RootViewController.m in Sources */,
 				EA0FC3311964EBAF00ACDFD6 /* CCLabelBMFont.m in Sources */,
 				EA0FC2FD1964EBAF00ACDFD6 /* b2TimeOfImpact.cpp in Sources */,
+				EAEDD7E9196A613A00B94E6C /* Bird.mm in Sources */,
 				EA0FC3461964EBAF00ACDFD6 /* CCTexture2D.m in Sources */,
 				EA0FC30A1964EBAF00ACDFD6 /* b2CircleContact.cpp in Sources */,
 				EA0FC3131964EBAF00ACDFD6 /* b2Joint.cpp in Sources */,
@@ -1875,6 +1926,7 @@
 				EA0FC31D1964EBAF00ACDFD6 /* CCActionGrid.m in Sources */,
 				EA0FC34F1964EBAF00ACDFD6 /* CCTransition.m in Sources */,
 				EA0FC31F1964EBAF00ACDFD6 /* CCActionInstant.m in Sources */,
+				EAEDD7E6196A5FEF00B94E6C /* SpriteBase.mm in Sources */,
 				EA0FC3981964EBAF00ACDFD6 /* SBJsonStreamParser.m in Sources */,
 				EA0FC32A1964EBAF00ACDFD6 /* CCCamera.m in Sources */,
 				EA0FC3241964EBAF00ACDFD6 /* CCActionTiledGrid.m in Sources */,
@@ -1908,9 +1960,11 @@
 				EA0FC3111964EBAF00ACDFD6 /* b2FrictionJoint.cpp in Sources */,
 				EA0FC3271964EBAF00ACDFD6 /* CCAnimationCache.m in Sources */,
 				EA0FC3A01964EBAF00ACDFD6 /* SBJsonUTF8Stream.m in Sources */,
+				EAEDD7E2196A3FF900B94E6C /* JsonParser.mm in Sources */,
 				EA0FC3601964EBAF00ACDFD6 /* CCProfiling.m in Sources */,
 				EA0FC3391964EBAF00ACDFD6 /* CCParticleExamples.m in Sources */,
 				EA0FC35C1964EBAF00ACDFD6 /* MacWindow.m in Sources */,
+				EAEDD7F2196A62AA00B94E6C /* Ice.mm in Sources */,
 				EA0FC3331964EBAF00ACDFD6 /* CCLayer.m in Sources */,
 				EA0FC3371964EBAF00ACDFD6 /* CCNode.m in Sources */,
 				EA0FC35A1964EBAF00ACDFD6 /* CCEventDispatcher.m in Sources */,
@@ -1952,6 +2006,8 @@
 				EA0FC36A1964EBAF00ACDFD6 /* CLScoreServerPost.m in Sources */,
 				EA0FC31B1964EBAF00ACDFD6 /* CCActionCamera.m in Sources */,
 				EA0FC31E1964EBAF00ACDFD6 /* CCActionGrid3D.m in Sources */,
+				EAEDD7F8196A670300B94E6C /* MyContactListener.m in Sources */,
+				EAEDD7DF196A337600B94E6C /* GameScene.mm in Sources */,
 				EA0FC35D1964EBAF00ACDFD6 /* base64.c in Sources */,
 				EA0FC3341964EBAF00ACDFD6 /* CCMenu.m in Sources */,
 				EA0FC3451964EBAF00ACDFD6 /* CCSpriteFrameCache.m in Sources */,
