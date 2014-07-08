@@ -62,12 +62,12 @@
         slingShot.contentSize = CGSizeMake(480, 320);
         slingShot.position = ccp(240, 160);
         [self addChild:slingShot];
-//
-//        // 把标准的touch打开
-//        self.isTouchEnabled = YES;
-//        // 注册cocos2d特有的事件方法
-//        [[CCTouchDispatcher sharedDispatcher] addTargetedDelegate:self priority:0 swallowsTouches:YES];
-//        
+
+        // 把标准的touch打开
+        self.isTouchEnabled = YES;
+        // 注册cocos2d特有的事件方法
+        [[CCTouchDispatcher sharedDispatcher] addTargetedDelegate:self priority:0 swallowsTouches:YES];
+        
         [self createWorld];
         [self createLevel];
     }
@@ -77,6 +77,7 @@
 -(void) createWorld {
     CGSize screenSize = [CCDirector sharedDirector].winSize;
     
+    //设置重力
     b2Vec2 gravity;
     gravity.Set(0.0f, -5.0f);
     
@@ -87,17 +88,77 @@
 //    contactListener = new MyContactListener(world, self);
 //    world->SetContactListener(contactListener);
     
+    //定义地板
     b2BodyDef groundBodyDef;
     groundBodyDef.position.Set(0, 0);
     
+    //创建地板刚体
     b2Body* groundBody = world->CreateBody(&groundBodyDef);
-    
+    //创建地板形状
     b2PolygonShape groundBox;
     // bottom
     groundBox.SetAsEdge(b2Vec2(0,(float)87/PTM_RATIO), b2Vec2(screenSize.width/PTM_RATIO,(float)87/PTM_RATIO));
+    //创建夹具把地板刚体与形状连接起来
     groundBody->CreateFixture(&groundBox,0);
     
-//    [self schedule:@selector(tick:)];
+    //启动一个定时器1/60.0f
+    [self schedule:@selector(tick:)];
+}
+
+-(void) tick: (ccTime) dt
+{
+    //速度、位置迭代次数
+	int32 velocityIterations = 8;
+	int32 positionIterations = 1;
+	
+    //让世界往前模拟dt
+	world->Step(dt, velocityIterations, positionIterations);
+    
+    
+    //	birdCount = 0;
+    //    pigCount = 0;
+	for (b2Body *b = world->GetBodyList(); b; b = b->GetNext())
+	{
+		if (b->GetUserData() != NULL) {
+			SpriteBase *oneSprite = (SpriteBase *)b->GetUserData();
+            
+            switch (oneSprite.tag) {
+                case BIRD_ID:
+                    //                    birdCount++;
+                    break;
+                case PIG_ID:
+                    //                    pigCount++;
+                    break;
+            }
+            
+			oneSprite.position = CGPointMake( b->GetPosition().x * PTM_RATIO, b->GetPosition().y * PTM_RATIO);
+			oneSprite.rotation = -1 * CC_RADIANS_TO_DEGREES(b->GetAngle());
+            
+            //如果小鸟停止运动删除小鸟
+            if (oneSprite.tag == BIRD_ID) {
+                if (!b->IsAwake()) {
+                    world->DestroyBody(b);
+                    [oneSprite destory];
+                }
+            }
+            //
+            if (oneSprite.HP <= 0 || oneSprite.position.x > 480 || oneSprite.position.y < 84) {
+                world->DestroyBody(b);
+                [oneSprite destory];
+            }
+		}
+	}
+    
+    //    if (pigCount == 0 && !gameFinish) {
+    //        gameFinish = true;
+    //        isWin = true;
+    //        [self calculatePoint];
+    //    }else if(birdCount == 0 && [birds count] == 0 && !gameFinish){
+    //        gameFinish = true;
+    //        isWin = false;
+    //        [self calculatePoint];
+    //    }
+    
 }
 
 - (void) createLevel {
@@ -162,5 +223,74 @@
     }
 }
 
+#define TOUCH_UNKNOW 0
+#define TOUCH_SHOTBIRD 1
+- (BOOL) ccTouchBegan:(UITouch *)touch withEvent:(UIEvent *)event {
+    // 判断时候触摸点落在currBird区域内
+    touchStatus = TOUCH_UNKNOW;
+    CGPoint location = [self convertTouchToNodeSpace:touch];
+    if (currentBird == nil) {
+        return NO;
+    }
+    CGRect birdRect = currentBird.boundingBox;
+    // 取得bird的区域
+    if (CGRectContainsPoint(birdRect, location)) {
+        // 判断触摸点是否落在bird区域
+        touchStatus = TOUCH_SHOTBIRD;
+        return YES;
+    }
+    return NO;
+}
+// 触摸过程中
+- (void) ccTouchMoved:(UITouch *)touch withEvent:(UIEvent *)event {
+    // 说明选中小鸟 可以拉动弹工
+    if (touchStatus == TOUCH_SHOTBIRD) {
+        // 取得当前手指的点
+        CGPoint location = [self convertTouchToNodeSpace:touch];
+        // 把小鸟和弹工的位置都设置为location;
+        slingShot.endPoint = location;
+        currentBird.position = location;
+    }
+}
+
+// from p1--p2
+- (CGFloat) getRatioFromPoint:(CGPoint )p1 toPoint:(CGPoint) p2 {
+    return (p2.y-p1.y)/(p2.x-p1.x);
+}
+- (void) ccTouchEnded:(UITouch *)touch withEvent:(UIEvent *)event {
+    // 手放开 1. 让bird飞出去 2. 让弹工复位
+    if (touchStatus == TOUCH_SHOTBIRD) {
+        CGPoint location = [self convertTouchToNodeSpace:touch];
+        slingShot.endPoint = SLINGSHOT_POS;
+        
+        // 从拉动 location ---> SLINGSHOT_POS
+        CGFloat r = [self getRatioFromPoint:location toPoint:SLINGSHOT_POS];
+        CGFloat endx = 300;
+        CGFloat endy = endx*r +location.y;
+        CGPoint destPoint = ccp(endx, endy);
+        
+        CCMoveTo *moveToAction = [[CCMoveTo alloc]initWithDuration:1.0f position:destPoint];
+        [currentBird runAction:moveToAction];
+        [moveToAction release];
+        
+//        float x =(85.0f-location.x)*50.0f/70.0f;
+//        float y =(125.0f-location.y)*50.0f/70.0f;
+//        [currentBird setSpeedX:x andY:y andWorld:world];
+        
+        [birds removeObject:currentBird];
+        currentBird = nil;
+        [self performSelector:@selector(jump) withObject:nil afterDelay:2.0f];
+        // 2.0f之后把下一个小鸟
+    }
+}
+
+- (void) dealloc {
+    [birds release];
+    [scoreLable release];
+    [super dealloc];
+}
+- (void) sprite:(SpriteBase *)sprite withScore:(int)score {
+    
+}
 
 @end
