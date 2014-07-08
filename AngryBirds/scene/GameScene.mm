@@ -8,6 +8,7 @@
 
 #import "GameScene.h"
 #import "SlingShot.h"
+#import "LevelScene.h"
 #define SLINGSHOT_POS CGPointMake(85, 125)
 
 @implementation GameScene
@@ -41,6 +42,13 @@
         bgSprite.scaleX = winSize.width/bgSprite.contentSize.width;
         bgSprite.scaleY = winSize.height/bgSprite.contentSize.height;
         [self addChild:bgSprite];
+        
+        // 放一个返回键的精灵
+        CCSprite *backsp = [CCSprite spriteWithFile:@"backarrow.png"];
+        backsp.position = ccp(40.0f, 40.0f);
+        backsp.scale = 0.5f;
+        backsp.tag = 100;
+        [self addChild:backsp];
 //        
 //        NSString *scoreStr = [NSString stringWithFormat:@"分数:%d", score];
 //        scoreLable = [[CCLabelTTF alloc] initWithString:scoreStr dimensions:CGSizeMake(300, 300) alignment:UITextAlignmentLeft fontName:@"Arial" fontSize:30];
@@ -142,7 +150,8 @@
                 }
             }
             //
-            if (oneSprite.HP <= 0 || oneSprite.position.x > 480 || oneSprite.position.y < 84) {
+            CGSize winSize = [[CCDirector sharedDirector] winSize];
+            if (oneSprite.HP <= 0 || oneSprite.position.x > winSize.width-20 || oneSprite.position.y < 84) {
                 world->DestroyBody(b);
                 [oneSprite destory];
             }
@@ -225,10 +234,25 @@
 
 #define TOUCH_UNKNOW 0
 #define TOUCH_SHOTBIRD 1
+#define BACKS_BTN 2
 - (BOOL) ccTouchBegan:(UITouch *)touch withEvent:(UIEvent *)event {
     // 判断时候触摸点落在currBird区域内
     touchStatus = TOUCH_UNKNOW;
     CGPoint location = [self convertTouchToNodeSpace:touch];
+    
+    CGPoint uiLocation = [touch locationInView:[touch view]];
+    CGPoint worldGlPoint = [[CCDirector sharedDirector] convertToGL:uiLocation];
+    CGPoint nodePoint = [self convertToNodeSpace:worldGlPoint];
+    for (int i = 0; i < self.children.count; i++) {
+        // 取得self屏幕上第i个精灵
+        CCSprite *oneSprite = [self.children objectAtIndex:i];
+        // 如果nodePoint包含在oneSprite中，并且tag为100
+        if (CGRectContainsPoint(oneSprite.boundingBox, nodePoint) && oneSprite.tag == 100) {
+            touchStatus = BACKS_BTN;
+            return YES;
+        }
+    }
+    
     if (currentBird == nil) {
         return NO;
     }
@@ -247,6 +271,18 @@
     if (touchStatus == TOUCH_SHOTBIRD) {
         // 取得当前手指的点
         CGPoint location = [self convertTouchToNodeSpace:touch];
+        
+        CGSize winsize = [[CCDirector sharedDirector]winSize];
+        if(location.x < 0){
+            location.x = 0;
+        }else if(location.x > 100){
+            location.x = 100;
+        }
+        if(location.y > winsize.height){
+            location.y = winsize.height;
+        }else if(location.y < 87){
+            location.y = 87;
+        }
         // 把小鸟和弹工的位置都设置为location;
         slingShot.endPoint = location;
         currentBird.position = location;
@@ -258,9 +294,10 @@
     return (p2.y-p1.y)/(p2.x-p1.x);
 }
 - (void) ccTouchEnded:(UITouch *)touch withEvent:(UIEvent *)event {
+    CGPoint location = [self convertTouchToNodeSpace:touch];
+    
     // 手放开 1. 让bird飞出去 2. 让弹工复位
     if (touchStatus == TOUCH_SHOTBIRD) {
-        CGPoint location = [self convertTouchToNodeSpace:touch];
         slingShot.endPoint = SLINGSHOT_POS;
         
 //        // 从拉动 location ---> SLINGSHOT_POS
@@ -281,6 +318,11 @@
         currentBird = nil;
         [self performSelector:@selector(jump) withObject:nil afterDelay:2.0f];
         // 2.0f之后把下一个小鸟
+    }else if(touchStatus == BACKS_BTN){
+        CCScene *sc = [LevelScene scene];
+        CCTransitionScene *trans = [[CCTransitionSplitRows alloc] initWithDuration:1.0f scene:sc];
+        [[CCDirector sharedDirector] replaceScene:trans];
+        [trans release];
     }
 }
 
