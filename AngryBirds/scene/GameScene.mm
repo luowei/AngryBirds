@@ -85,8 +85,8 @@
     world = new b2World(gravity, doSleep);
     
     // 给world设置碰撞监听对象
-//    contactListener = new MyContactListener(world, self);
-//    world->SetContactListener(contactListener);
+    contactListener = new MyContactListener(world, self);
+    world->SetContactListener(contactListener);
     
     //定义地板
     b2BodyDef groundBodyDef;
@@ -263,19 +263,19 @@
         CGPoint location = [self convertTouchToNodeSpace:touch];
         slingShot.endPoint = SLINGSHOT_POS;
         
-        // 从拉动 location ---> SLINGSHOT_POS
-        CGFloat r = [self getRatioFromPoint:location toPoint:SLINGSHOT_POS];
-        CGFloat endx = 300;
-        CGFloat endy = endx*r +location.y;
-        CGPoint destPoint = ccp(endx, endy);
+//        // 从拉动 location ---> SLINGSHOT_POS
+//        CGFloat r = [self getRatioFromPoint:location toPoint:SLINGSHOT_POS];
+//        CGFloat endx = 300;
+//        CGFloat endy = endx*r +location.y;
+//        CGPoint destPoint = ccp(endx, endy);
+//        
+//        CCMoveTo *moveToAction = [[CCMoveTo alloc]initWithDuration:1.0f position:destPoint];
+//        [currentBird runAction:moveToAction];
+//        [moveToAction release];
         
-        CCMoveTo *moveToAction = [[CCMoveTo alloc]initWithDuration:1.0f position:destPoint];
-        [currentBird runAction:moveToAction];
-        [moveToAction release];
-        
-//        float x =(85.0f-location.x)*50.0f/70.0f;
-//        float y =(125.0f-location.y)*50.0f/70.0f;
-//        [currentBird setSpeedX:x andY:y andWorld:world];
+        float x =(85.0f-location.x)*50.0f/70.0f;
+        float y =(125.0f-location.y)*50.0f/70.0f;
+        [currentBird setSpeedX:x andY:y andWorld:world];
         
         [birds removeObject:currentBird];
         currentBird = nil;

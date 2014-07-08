@@ -63,7 +63,7 @@
     // Give shape initial impulse...
     //构建一个力向量
     b2Vec2 force = b2Vec2(x, y);
-    //应用一个线性的冲击到球中心
+    //应用一个线性的冲量到球中心
     ballBody->ApplyLinearImpulse(force, ballBodyDef.position);
 }
 
