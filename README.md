@@ -5,3 +5,6 @@ AngryBirds
 
 
 ![AngryBirds](./doc/a.gif)
+
+
+此项目参考了千锋学院欧阳坚<开发愤怒的小鸟示例>，仅供学习分享..
